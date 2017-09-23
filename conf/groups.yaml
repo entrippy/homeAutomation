@@ -1,0 +1,97 @@
+  default_view:
+    view: yes
+    entities:
+      - group.clock
+      - group.family
+      - group.weather
+      - group.deskLight_card
+      - group.automations_card
+      - group.front_of_house_card
+      - group.plex_media_card
+      - group.loungeRoom_card
+      - group.masterBedRoom_card
+    
+
+  automations_card:
+    name: Automations
+    view: yes
+    entities:
+      - automation.steps_off_at_eleven
+      - automation.steps_on_at_sunset
+      - automation.steps_on_in_the_morning
+      - automation.steps_off_at_dawn
+
+  Family: device_tracker.aly_alyse, device_tracker.pixel_simon
+  Clock: sensor.date, sensor.time, sun.sun
+  Weather: sensor.bom_grays_point_air_temp_c, sensor.bom_grays_point_cloud, sensor.bom_grays_point_rain_today, sensor.bom_grays_point_wind_speed_kmh
+
+  deskLight_card:
+    name: Desk Light
+    entities:
+      - light.fibaro_system_fgrgbwm441_rgbw_controller_level_3_0
+      - light.fibaro_system_fgrgbwm441_rgbw_controller_level_3_0_2
+      - light.fibaro_system_fgrgbwm441_rgbw_controller_level_3_0_3
+      - light.fibaro_system_fgrgbwm441_rgbw_controller_level_3_0_4
+      - light.fibaro_system_fgrgbwm441_rgbw_controller_level_3_0_5
+      - light.fibaro_system_fgrgbwm441_rgbw_controller_level_3_0_6
+
+  deskLight_sensors_card:
+    name: Desk Light Sensors
+    entities:
+      - sensor.fibaro_system_fgrgbwm441_rgbw_controller_energy_3_0
+      - sensor.fibaro_system_fgrgbwm441_rgbw_controller_power_3_4
+      - sensor.fibaro_system_fgrgbwm441_rgbw_controller_power_3_8
+
+  frontSteps_sensors_card:
+    name: Front Steps Sensors
+    entities:
+      - sensor.fibaro_system_fgs213_switch_energy_2_0
+      - sensor.fibaro_system_fgs213_switch_heat_2_7
+      - sensor.fibaro_system_fgs213_switch_power_2_8
+
+  loungeLamp_sensors_card:
+    name: Lounge Lamp Sensors
+    entities:
+      - sensor.lounge_lamp_energy_5_0
+      - sensor.lounge_lamp_power_5_8
+      - sensor.lounge_lamp_previous_reading_5_1
+      - sensor.lounge_lamp_voltage_5_16
+
+  simonsLamp_sensors_card:
+    name: Simons Lamp Sensors
+    entities:
+      - sensor.simons_lamp_energy_6_0
+      - sensor.simons_lamp_power_6_8
+      - sensor.simons_lamp_previous_reading_6_1
+      - sensor.simons_lamp_voltage_6_16
+
+  monitor_view:
+    name: Monitor
+    view: yes
+    entities:
+      - group.deskLight_sensors_card
+      - group.frontSteps_sensors_card
+      - group.loungeLamp_sensors_card
+      - group.simonsLamp_sensors_card
+
+  front_of_house_card:
+    name: Front of House
+    entities:
+      - switch.fibaro_system_fgs213_switch_switch_2_0
+
+  plex_media_card:
+    name: Plex
+    entities:
+      - media_player.plex_web_chrome
+      - sensor.plex
+
+  loungeRoom_card:
+    name: Lounge Room
+    entities:
+      - switch.lounge_lamp_switch_5_0
+    
+  masterBedRoom_card:
+    name: Master Bedroom
+    entities:
+      - switch.simons_lamp_switch_6_0
+    

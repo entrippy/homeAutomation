@@ -1,0 +1,17 @@
+
+pixel_simon:
+  hide_if_away: false
+  mac:
+  name: Simon
+  picture: /local/simon.jpg
+  track: true
+  vendor:
+
+aly_alyse:
+  hide_if_away: false
+  mac:
+  name: Aly
+  picture: /local/aly.jpg
+  track: true
+  vendor:
+

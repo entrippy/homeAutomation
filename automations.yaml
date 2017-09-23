@@ -1,0 +1,113 @@
+# Lights to be turned on at sunset
+  - id: steps_on_sunset
+    alias: 'Steps on at sunset'
+    trigger:
+      platform: sun
+      event: sunset
+      offset: '+00:30:00'
+    action:
+      service: switch.turn_on
+      entity_id: switch.fibaro_system_fgs213_switch_switch_2_0
+ 
+
+# Lights to be turned off at bedtime
+  - id: steps_off_eleven
+    alias: 'Steps off at Eleven'
+    trigger:
+      platform: time
+      at: '23:00:00'
+    action:
+      service: switch.turn_off
+      entity_id: switch.fibaro_system_fgs213_switch_switch_2_0
+
+# Lights on before Dawn
+  - id: steps_on_morning
+    alias: 'Steps on in the morning'
+    trigger:
+      platform: time
+      at: '06:00:00'
+    condition:
+      condition: sun
+      before: sunrise
+    action:
+      service: switch.turn_on
+      entity_id: switch.fibaro_system_fgs213_switch_switch_2_0
+
+# Lights off at sunrise
+  - id: steps_off_at_dawn
+    alias: 'Steps off at dawn'
+    trigger:
+      platform: sun
+      event: sunrise
+    action:
+      service: switch.turn_off
+      entity_id: switch.fibaro_system_fgs213_switch_switch_2_0
+
+# Bedroom Lamp on at nightfall
+  - id: bed_on_at_night
+    alias: 'Bedroom Lamp on at night'
+    trigger:
+      platform: sun
+      event: sunset
+      offset: '+00:30:00'
+    action:
+      service: switch.turn_on
+      entity_id: switch.simons_lamp_switch_6_0
+
+  - id: bed_off_at_eleven_pm
+    alias: 'Bedroom Lamp off, go to sleep'
+    trigger:
+      platform: time
+      at: '23:00:00'
+    action:
+      service: switch.turn_off
+      entity_id: switch.simons_lamp_switch_6_0
+
+# Bedroom Lamp on for work
+  - id: bed_on_at_wakeup
+    alias: 'Bedroom Lamp on, wake up'
+    trigger:
+      platform: time
+      at: '06:05:00'
+    condition:
+      - condition: sun
+        before: sunrise
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+    action:
+      service: switch.turn_on
+      entity_id: switch.simons_lamp_switch_6_0
+
+  - id: bed_off_for_work
+    alias: 'Bedroom Lamp off, work time'
+    trigger:
+      platform: time
+      at: '06:40:00'
+    action:
+      service: switch.turn_off
+      entity_id: switch.simons_lamp_switch_6_0
+
+# Lounge Lamp
+  - id: lounge_lamp_on
+    alias: 'Lounge lamp on at dusk'
+    trigger:
+      platform: sun
+      event: sunset
+      offset: '+00:30:00'
+    action:
+      service: switch.turn_on
+      entity_id: switch.lounge_lamp_switch_5_0
+
+  - id: lounge_lamp_off
+    alias: 'Lounge lamp off before bed'
+    trigger:
+      platform: time
+      at: '23:00:00'
+    action:
+      service: switch.turn_off
+      entity_id: switch.lounge_lamp_switch_5_0
